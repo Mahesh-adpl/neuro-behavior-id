@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <h2>NeuroBehaviorID Login</h2>
+
+    <form (ngSubmit)="onLogin()">
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" required
+                placeholder="Enter your email" />
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="loading">
+            {{ loading ? 'Tracking...' : 'Login' }}
+        </button>
+    </form>
+
+    <div class="mt-3" *ngIf="loading">
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <span> Matching your behavior...</span>
+    </div>
+
+    <div *ngIf="status && !loading" class="alert alert-info mt-3">
+        {{ status }}
+    </div>
+
+    <div class="mt-3">
+        <!-- <button> -->
+            <a routerLink="/signup" class="btn btn-outline-primary mt-3">
+                New user? Sign up here
+            </a>
+        <!-- </button> -->
+
+    </div>
+</div>
